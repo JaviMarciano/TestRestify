@@ -4,9 +4,7 @@ var config = require('./config');
 var server = restify.createServer();
  var TVShowModel = require("./models/tvshow");
 var TVShowCtrl = require('./Controllers/tvshows');
-
-console.log(config.port);
-
+var LoginCtrl = require('./Controllers/login');
 
 server.get('/', function(){
     console.log('exito');
@@ -26,12 +24,15 @@ server.post('/tvshows/', TVShowCtrl.addTVShow);
 server.del('/tvshows/:id', TVShowCtrl.deleteTVShow);
 server.get('/tvshows/:id',TVShowCtrl.findById);
 
+
+server.post('/login/',LoginCtrl.GetToken);
+
 mongoose.connect('mongodb://localhost/tvshows',function(err, res){
     if(err){
         console.log('error' + err);
     }
     else{
-        server.listen(3000, function(err, res){
+        server.listen(config.port, function(err, res){
             console.log("Node server running on http://localhost:3000");
         });
         

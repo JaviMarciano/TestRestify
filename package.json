@@ -9,6 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "jsonwebtoken": "^7.3.0",
     "mongoose": "^4.9.2",
     "restify": "^4.3.0"
   }
